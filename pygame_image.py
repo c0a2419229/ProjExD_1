@@ -30,18 +30,19 @@ def main():
         key_lst = pg.key.get_pressed()
         if key_lst[pg.K_UP]:
             kok_rct.move_ip((0, -1))
-            
+
         if key_lst[pg.K_DOWN]:
             kok_rct.move_ip((0, 1))
 
         if key_lst[pg.K_LEFT]:
             kok_rct.move_ip((-1, 0))
-
+        else:
+            kok_rct.move_ip((-1, 0))
+            
         if key_lst[pg.K_RIGHT]:
             kok_rct.move_ip((1, 0))
 
         screen.blit(kok_img, kok_rct)
-
         pg.display.update()
         tmr += 1        
         clock.tick(200)
