@@ -26,12 +26,11 @@ def main():
         screen.blit(bg_img, [-tmr, 0])
         screen.blit(bg_img2, [-tmr+1600, 0])
         screen.blit(bg_img3, [-tmr+3200, 0])
-        # screen.blit(kok_img, [300, 200])
 
         key_lst = pg.key.get_pressed()
         if key_lst[pg.K_UP]:
             kok_rct.move_ip((0, -1))
-        
+            
         if key_lst[pg.K_DOWN]:
             kok_rct.move_ip((0, 1))
 
@@ -42,6 +41,7 @@ def main():
             kok_rct.move_ip((1, 0))
 
         screen.blit(kok_img, kok_rct)
+
         pg.display.update()
         tmr += 1        
         clock.tick(200)
