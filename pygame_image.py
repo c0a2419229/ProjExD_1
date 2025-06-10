@@ -18,6 +18,9 @@ def main():
     kok_rct = kok_img.get_rect()
     kok_rct.center = 300, 200
     tmr = 0
+    # way_lst = [pg.K_UP, pg.K_DOWN, pg.K_LEFT, pg.K_RIGHT]
+    # move_lst = [(0, -1), (0, 1), (-1, 0), (1, 0), ]
+    
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: 
@@ -28,19 +31,23 @@ def main():
         screen.blit(bg_img3, [-tmr+3200, 0])
 
         key_lst = pg.key.get_pressed()
+    
         if key_lst[pg.K_UP]:
-            kok_rct.move_ip((0, -1))
-
-        if key_lst[pg.K_DOWN]:
-            kok_rct.move_ip((0, 1))
-
-        if key_lst[pg.K_LEFT]:
-            kok_rct.move_ip((-1, 0))
+            x = -1
+            y = -1
+        elif key_lst[pg.K_DOWN]:
+            x = -1
+            y = 1
+        elif key_lst[pg.K_LEFT]:
+            x = -1
+            y = 0
+        elif key_lst[pg.K_RIGHT]:
+            x = 1
+            y = 0
         else:
-            kok_rct.move_ip((-1, 0))
-            
-        if key_lst[pg.K_RIGHT]:
-            kok_rct.move_ip((1, 0))
+            x = -1
+            y = 0
+        kok_rct.move_ip((x,y))
 
         screen.blit(kok_img, kok_rct)
         pg.display.update()
