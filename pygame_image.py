@@ -15,15 +15,33 @@ def main():
     bg_img3 = pg.image.load("fig/pg_bg.jpg")
     kok_img = pg.image.load("fig/3.png")
     kok_img = pg.transform.flip(kok_img, True, False)
+    kok_rct = kok_img.get_rect()
+    kok_rct.center = 300, 200
     tmr = 0
     while True:
         for event in pg.event.get():
-            if event.type == pg.QUIT: return
+            if event.type == pg.QUIT: 
+                return
 
         screen.blit(bg_img, [-tmr, 0])
         screen.blit(bg_img2, [-tmr+1600, 0])
         screen.blit(bg_img3, [-tmr+3200, 0])
-        screen.blit(kok_img, [300, 200])
+        # screen.blit(kok_img, [300, 200])
+
+        key_lst = pg.key.get_pressed()
+        if key_lst[pg.K_UP]:
+            kok_rct.move_ip((0, -1))
+        
+        if key_lst[pg.K_DOWN]:
+            kok_rct.move_ip((0, 1))
+
+        if key_lst[pg.K_LEFT]:
+            kok_rct.move_ip((-1, 0))
+
+        if key_lst[pg.K_RIGHT]:
+            kok_rct.move_ip((1, 0))
+
+        screen.blit(kok_img, kok_rct)
         pg.display.update()
         tmr += 1        
         clock.tick(200)
